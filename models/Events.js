@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var CommonSlideShowSchema = require('./CommonSlideShow');
+// var CommonSlideShowSchema = require('./CommonSlideShow');
 
 var EventScheme = new mongoose.Schema({
 	day   : String,

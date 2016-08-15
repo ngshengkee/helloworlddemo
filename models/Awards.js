@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 
-
 var AwardScheme = new mongoose.Schema({
 	day   : Number,
 	month : String,

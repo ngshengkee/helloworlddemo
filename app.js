@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 
 var mongoose = require('mongoose');
-require('./models/Home');
+// require('./models/Home');
 require('./models/Posts');
 require('./models/Products');
 require('./models/Events');
@@ -15,7 +15,7 @@ require('./models/Comments');
 mongoose.connect('mongodb://localhost/comfyseat');
 
 var routes      = require('./api/index');
-var HomeAPI     = require('./api/home');
+// var HomeAPI     = require('./api/home');
 var ProductsAPI = require('./api/products');
 var EventsAPI   = require('./api/events');
 
@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // api
 app.use('/', routes);
-app.use('/', HomeAPI);
+// app.use('/', HomeAPI);
 app.use('/', ProductsAPI);
 app.use('/', EventsAPI);
 
