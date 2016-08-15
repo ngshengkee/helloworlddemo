@@ -72,21 +72,38 @@ app.use(function(err, req, res, next) {
     });
 });
 
-// // app.use('', express.static(__dirname + '/javascripts'));
-// // app.use('/public', express.static(__dirname + '/public'));
-// // app.use('/views', express.static(__dirname + '/views'));
-// app.use(function(req, res, next) {
-// 	if(req.url.substr(-1) == '/' && req.url.length > 1)
-// 		res.redirect(301, req.url.slice(0, -1));
-// 	else
-//        next();
-// });
 
-// // app.all('/*', function(req, res, next) {
-// //     // Just send the index.html for other files to support HTML5Mode
-// //     // console.log(__dirname);
-// //     res.sendFile('index.html', { root: __dirname });
-// //     // res.sendFile(path.join(__dirname + '/index.html'));
-// // });
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
 
-app.listen(3000); //the port you want to use
+// error handlers
+
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
+    });
+  });
+}
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
+});
+
+
+module.exports = app;
+// app.listen(3000); //the port you want to use
